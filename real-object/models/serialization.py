@@ -12,8 +12,11 @@ def safe_torch_load(file_path, map_location=None):
     Returns:
         The loaded model
     """
-    # Add DetectionModel to the list of safe globals
-    torch.serialization.add_safe_globals([DetectionModel])
+    try:
+        # Add DetectionModel to the list of safe globals
+        torch.serialization.add_safe_globals([DetectionModel])
+    except AttributeError:
+        print("Warning: add_safe_globals is not available in this PyTorch version.")
     
     try:
         # Try loading with weights_only=False for backward compatibility
