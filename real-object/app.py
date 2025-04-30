@@ -12,7 +12,13 @@ import pandas as pd
 import altair as alt
 import time
 
-#@# Add necessary classes to safe globals
+# Ensure compatibility with the ultralytics package
+try:
+    import ultralytics
+except ImportError:
+    raise ImportError("The 'ultralytics' package is not installed. Please install it using 'pip install ultralytics'.")
+
+# Add necessary classes to safe globals
 torch.serialization.add_safe_globals([
     DetectionModel,
     nn.modules.container.Sequential,
