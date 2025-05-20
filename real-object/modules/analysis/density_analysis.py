@@ -1,14 +1,14 @@
 import datetime
 
-class TrafficAnalyzer:
+class CrowdAnalyzer:
     def __init__(self):
-        self.vehicle_counts = []
+        self.crowd_counts = []
 
-    def count_vehicles(self, tracked_vehicles, frame_number):
-        count = len(tracked_vehicles)
+    def count_crowd(self, tracked_crowd, frame_number):
+        count = len(tracked_crowd)
         timestamp = datetime.datetime.now().strftime("%H:%M:%S")
-        self.vehicle_counts.append({'frame': frame_number, 'time': timestamp, 'count': count})
+        self.crowd_counts.append({'frame': frame_number, 'time': timestamp, 'count': count})
         return count
 
     def get_summary(self):
-        return self.vehicle_counts
+        return self.crowd_counts

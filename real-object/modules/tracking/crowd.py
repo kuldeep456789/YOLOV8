@@ -1,6 +1,6 @@
 from deep_sort_realtime.deepsort_tracker import DeepSort
 
-class VehicleTracker:
+class CrowdTracker:
     def __init__(self):
         self.tracker = DeepSort(
             max_age=30,
@@ -17,14 +17,14 @@ class VehicleTracker:
 
         tracks = self.tracker.update_tracks(track_inputs, frame=frame)
 
-        tracked_vehicles = []
+        tracked_crowd = []
         for track in tracks:
             if not track.is_confirmed():
                 continue
             track_id = track.track_id
             ltrb = track.to_ltrb()
-            tracked_vehicles.append({
+            tracked_crowd.append({
                 'id': track_id,
                 'bbox': ltrb  # [x1, y1, x2, y2]
             })
-        return tracked_vehicles
+        return tracked_crowd

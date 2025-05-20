@@ -1,15 +1,15 @@
-# modules/detection/vehicle_detector.py
+# modules/detection/crowd_detector.py
 
 import os
 from ultralytics import YOLO
 
-class VehicleDetector:
+class CrowdDetector:
     def __init__(self, model_path="models/yolov8n.pt"):
         if not os.path.exists(model_path):
             raise FileNotFoundError(f"Model file not found at {model_path}")
         self.model = YOLO(model_path)
 
-    def detect_vehicles(self, frame):
+    def detect_crowd(self, frame):
         results = self.model(frame)[0]
         detections = []
 
